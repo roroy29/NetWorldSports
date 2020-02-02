@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Home</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="./slick/slick.css">
+  <link rel="stylesheet" type="text/css" href="./slick/slick-theme.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+  
+
+  <section class="lazy slider" data-sizes="50vw">
+    <div>
+      <img data-lazy="1.jpg" data-srcset="1.jpg" data-sizes="100vw">
+    </div>
+    <div>
+      <img data-lazy="2.jpg" data-srcset="2.jpg" data-sizes="100vw">
+    </div>
+    <div>
+      <img data-lazy="3.jpg"  data-srcset="3.jpg" data-sizes="100vw">
+    </div>
+    <div>
+      <img data-lazy="4.jpg"  data-srcset="4.jpg" data-sizes="100vw">
+    </div>
+    <div>
+      <img data-lazy="5.jpg"  data-srcset="5.jpg" data-sizes="100vw">
+    </div>
+  </section>
+
+  <section style="padding-left:40px; padding-right:40px;">
+  	The following questions are php related, and we expect the answer to be an example piece of code written in php.
+  	<ol>
+		<li>
+			We have a variable, defined as $string, which is a string 200 characters long, and we want to display only 40 characters in a snippet. What approach would you take to achieve this?
+			<br><button onclick="show1();">Reveal Answer</button><br><br>
+			<div id="hide1">
+					<pre>
+						$str = "A quick brown fox jumps over a lazy black dog";
+						$result = substr($str, 0, 40);
+						echo $results; //it will show only 40 characters
+					</pre>
+				</div>
+		</li>
+
+		<li>
+			$string contains letters and numbers, the numbers aren't relevant to us, so we want to remove all of the numbers from the string. What approach would you take to achieve this?
+			<br><button onclick="show2();">Reveal Answer</button><br><br>
+			<div id="hide2">
+					<pre>
+						$str = "A quick 4 brown fox jumps over a 1 lazy black dog having registration no 7678343";
+						$results = preg_replace('/[0-9]+/', '', $str); //it will remove all numbers
+						echo $results;
+					</pre>
+				</div>
+		</li>
+
+		<li>
+			$string has been encrypted using a basic encryption method. We know that all occurrences of the letters 'a, r, d' were replaced with 'c, m, e' respectively; we need to replace these letters with the respective letters. What approach would you take to achieve this?
+			<br><button onclick="show3();">Reveal Answer</button><br><br>
+			<div id="hide3">
+					<pre>
+						$str = "A quick 4 brown fox jumps over a 1 lazy black dog having registration no 7678343";
+						$str = str_replace('a', 'c', $str); //replace a with c
+						$str = str_replace('r', 'm', $str); //replace r with m
+						$results = str_replace('d', 'e', $str); //replace d with e
+						echo $results;
+					</pre>
+				</div>
+		</li>
+
+		<li>
+			We know that $string is a url, what we need to know is the domain name used in the url. What approach would you take to achieve this?
+			<br><button onclick="show4();">Reveal Answer</button><br><br>
+			<div id="hide4">
+					<pre>
+						$url = "https://www.masddc.com";
+					 	$host = @parse_url($url, PHP_URL_HOST);
+				    	if (!$host)
+				        	$host = $url;
+				    	if (substr($host, 0, 4) == "www.")
+				        	$host = substr($host, 4);
+				    	if (strlen($host) > 50)
+				        	$host = substr($host, 0, 47) . '...';
+				    	echo $host;
+				</div>
+		</li>
+
+		<li>
+			Lastly, there were 2 parameters passed in the url. We need to know the name and value of the 2 parameters. What approach would you take to achieve this?
+			<br><button onclick="show5();">Reveal Answer</button><br><br>
+			<div id="hide5">
+				
+					$url = "https://www.masddc.com?name=aab&phone=023123213";
+					$url_components = parse_url($url); 
+					parse_str($url_components['query'], $params); 
+
+					print_r($params); //it will contain name and value of parameters
+				
+			</div>
+		</li>
+	</ol>
+
+  </section>
+
+  <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
+  <script src="./slick/slick.js" type="text/javascript" charset="utf-8"></script>
+  <script type="text/javascript" src="init.js"></script>
+
+</body>
+</html>
